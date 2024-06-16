@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://robzarel.github.io/gh-pages-demo",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,6 +15,7 @@
     "vite": "^5.2.0"
   },
   "dependencies": {
-    "ethers": "^6.13.0"
+    "ethers": "^6.13.0",
+    "gh-pages": "^6.1.1"
   }
 }
