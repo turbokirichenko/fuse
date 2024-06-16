@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://robzarel.github.io/gh-pages-demo",
+  "homepage": "https://turbokirichenko.github.io/fuse/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
