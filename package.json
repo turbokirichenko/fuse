@@ -5,9 +5,7 @@
   "type": "module",
   "homepage": "https://turbokirichenko.github.io/fuse",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.0.2",
