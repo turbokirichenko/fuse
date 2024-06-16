@@ -1,5 +1,6 @@
 <script>
   import { useSwitchNetwork } from "./lib/utils/use-switch-network";
+  import { useDisctonnectNetwork } from "./lib/utils/use-disconnect-network";
 
   /**
    * @type { EIP6963AnnounceProviderEvent["detail"][] }
@@ -29,28 +30,36 @@
   const handleConnect = async (wallet) => {
     try {
       console.log("HANDLE:start");
+      if (selectedWallet) return;
       const accounts = await useSwitchNetwork(wallet);
       console.log("HANDLE:get-accounts:", accounts);
       selectedAccount = accounts?.[0];
       selectedWallet = wallet;
       console.log("HANDLE:set-account:", accounts?.[0]);
     } catch (err) {
-      console.error(err);
+      alert(err.message);
+    }
+  };
+
+  /**
+   *
+   * @param {EIP6963AnnounceProviderEvent["detail"]} wallet
+   */
+  const handleDisconnect = async (wallet) => {
+    try {
+      const res = await useDisctonnectNetwork(wallet);
+      if (!res) {
+        selectedAccount = null;
+        selectedWallet = null;
+      }
+    } catch (err) {
+      alert(err.message);
     }
   };
 </script>
 
 <main>
-  <div></div>
-  <h1>Connect to metamask example</h1>
-
-  <p class="read-the-docs">Connect</p>
-  {#each providers as provider}
-    <button on:click={() => handleConnect(provider)}>
-      <img src={provider.info.icon} alt={provider.info.name} />
-      <div>{provider.info.name}</div>
-    </button>
-  {/each}
+  <h1>Metamask manage connection</h1>
 
   {#if selectedAccount}
     <div>
@@ -59,7 +68,18 @@
         <div>{selectedWallet.info.name}</div>
         <div>{selectedAccount} SIBR</div>
       </div>
+      <button on:click={() => handleDisconnect(selectedWallet)}>
+        <div>disconnect</div>
+      </button>
     </div>
+  {:else}
+    <p class="read-the-docs">Connect</p>
+    {#each providers as provider}
+      <button on:pointerdown={() => handleConnect(provider)}>
+        <img src={provider.info.icon} alt={provider.info.name} />
+        <div>{provider.info.name}</div>
+      </button>
+    {/each}
   {/if}
 </main>
 

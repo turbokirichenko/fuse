@@ -1,12 +1,4 @@
-// method of browser wallet
-const WALLET_METHOD = {
-    switch: "wallet_switchEthereumChain",
-    add: "wallet_addEthereumChain",
-}
-
-const ETH_METHOD = {
-    account: "eth_requestAccounts",
-}
+import { WALLET_METHOD, ETH_METHOD } from "./constants";
 
 /** created connection to the provider
  * 
@@ -36,25 +28,22 @@ export const useSwitchNetwork = async (wallet, props = {
     } catch (error) {
         // This error code means that the chain we want has not been added to MetaMask
         // In this case we ask the user to add it to their MetaMask
-        if (error.code === 4902) {
-            try {
-                await wallet.provider.request({
-                    method: WALLET_METHOD.add,
-                    params: [{
-                        chainId: props.chainId,
-                        chainName: props.chainName,
-                        rpcUrls: props.rpcUrls,
-                        nativeCurrency: props.nativeCurrency,
-                        blockExplorerUrls: props.blockExplorerUrls,
-                    },],
-                });
-                return wallet.provider.request({
-                    method: ETH_METHOD.account,
-                })
-            } catch (error) {
-                throw error;
-            }
+        try {
+            await wallet.provider.request({
+                method: WALLET_METHOD.add,
+                params: [{
+                    chainId: props.chainId,
+                    chainName: props.chainName,
+                    rpcUrls: props.rpcUrls,
+                    nativeCurrency: props.nativeCurrency,
+                    blockExplorerUrls: props.blockExplorerUrls,
+                },],
+            });
+            return wallet.provider.request({
+                method: ETH_METHOD.account,
+            })
+        } catch (error) {
+            throw error;
         }
-        throw error;
     }
 };
