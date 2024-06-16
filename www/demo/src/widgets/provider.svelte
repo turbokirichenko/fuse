@@ -34,13 +34,19 @@
   };
 </script>
 
-<p class="read-the-docs">Connect to wallet</p>
 {#each providers as provider}
+  <p class="read-the-docs">Connect wallet</p>
   <button on:pointerdown={() => handleConnect(provider)}>
     <img src={provider.info.icon} alt={provider.info.name} />
     <div>{provider.info.name}</div>
   </button>
 {/each}
+{#if !providers.length}
+  <div>
+    <p>Please! Install Metamask to using this app!</p>
+    <a href="https://metamask.io">https://metamask.io/</a>
+  </div>
+{/if}
 
 <style>
   .read-the-docs {

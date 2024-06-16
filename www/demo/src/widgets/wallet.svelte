@@ -99,11 +99,11 @@
     box-sizing: border-box;
     display: flex;
     gap: 10px;
-    width: 100%;
-    margin: auto;
+    width: 90%;
+    max-width: 480px;
     height: 60px;
     border-radius: 30px;
-    margin: 20px 0 20px;
+    margin: 20px auto 20px;
     padding: 5px 8px;
     border: 3px solid #f0f0f0;
   }
