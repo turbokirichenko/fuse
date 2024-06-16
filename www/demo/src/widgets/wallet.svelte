@@ -62,9 +62,6 @@
         error = "Отклонена: При исполнении операции возникла ошибка!";
       }
     }
-    const tx2 = await useGetBottle(selectedAccount, provider);
-    console.log(tx2 / 100);
-    balanceBOTTLE = tx2;
   };
 </script>
 
@@ -72,7 +69,6 @@
   <div class="balance">
     <img src={selectedWallet.info.icon} alt={selectedWallet.info.name} />
     <div>{selectedWallet.info.name}</div>
-    <div>{balanceBOTTLE} BOTTLE</div>
   </div>
   <div class="notice">
     {#if error}
