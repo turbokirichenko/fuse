@@ -1,10 +1,10 @@
 <script>
   import logo from "../public/vite.svg";
-  import bottle from "../public/bottle.png";
-  import qr from "../public/QR-bar.png";
-  import bg from "../public/bg.jpg";
-  import inimage from "../public/images.png";
-  import token from "../public/token.png";
+  import bottle from "../public/plastic.png";
+  import qr from "../public/scan.png";
+  import gh from "../public/GitHub_Logo.png";
+  import inimage from "../public/html.png";
+  import token from "../public/crypto.png";
   import Provider from "./widgets/provider.svelte";
   import Wallet from "./widgets/wallet.svelte";
 
@@ -34,6 +34,9 @@
   window.dispatchEvent(new Event("eip6963:requestProvider"));
 </script>
 
+<a class="header-logo" href="https://github.com/turbokirichenko/fuse">
+  <img class="header-logo__image" src={gh} alt="github logo" />
+</a>
 <main class="up">
   <section class="first">
     <div class="head-one">
@@ -42,7 +45,7 @@
       </h1>
       <p class="gray">Web3 platform to make the world a cleaner place</p>
       <p class="gray">
-        Collect bottles and get <b class="green">BOTTLE</b> tokens
+        Collect bottles and get <b class="green">$BOTTLE</b> tokens
       </p>
       <p class="gray">
         <b class="green">Fuse</b> is the new era of ecofriendly products
@@ -80,6 +83,17 @@
 </main>
 
 <style>
+  .header-logo {
+    display: block;
+    position: absolute;
+    top: 1.8%;
+    left: 1.8%;
+    width: max(8vh, 6vw);
+  }
+  .header-logo__image {
+    display: block;
+    width: 100%;
+  }
   .header__image {
     padding-top: 0.5rem;
     height: 4rem;
@@ -104,7 +118,8 @@
   .gray {
     padding: 0;
     margin: 0 auto;
-    font-size: 1em;
+    font-size: 1.1rem;
+    font-weight: 300;
     color: #66688880;
   }
   .green {

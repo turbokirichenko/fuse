@@ -21,10 +21,8 @@
    */
   const handleConnect = async (wallet) => {
     try {
-      console.log("HANDLE:start");
       if (selectedWallet) return;
       const accounts = await useSwitchNetwork(wallet);
-      console.log("HANDLE:get-accounts:", accounts);
       selectedAccount = accounts?.[0];
       selectedWallet = wallet;
       console.log("HANDLE:set-account:", accounts?.[0]);
@@ -42,14 +40,31 @@
   </button>
 {/each}
 {#if !providers.length}
-  <div>
-    <p>Please! Install Metamask to using this app!</p>
-    <a href="https://metamask.io">https://metamask.io/</a>
+  <div class="red-border">
+    <p class="red-border__p">
+      Please! Install <a href="https://metamask.io">Metamask</a> to using this app!
+    </p>
   </div>
 {/if}
 
 <style>
   .read-the-docs {
     color: #888;
+  }
+
+  .red-border {
+    width: 90%;
+    margin: auto;
+    max-width: 360px;
+    border: solid lightblue 5px;
+    border-radius: 20px;
+    color: lightblue;
+    padding: 5px 12px;
+    font-size: 1.1rem;
+  }
+  .red-border__p {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
   }
 </style>

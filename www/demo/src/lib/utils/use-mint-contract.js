@@ -16,7 +16,7 @@ export const useMintContract = async (gs1barcode, account, provider) => {
             signer
         );
         return contract.mintByApprove(gs1barcode, {
-            gasLimit: 170000,
+            gasLimit: 310000,
         });
     } else {
         throw new Error('barcode is empty')
@@ -29,7 +29,5 @@ export const useGetBottle = async (account, provider) => {
         contractAbi,
         provider
     );
-    return contract.balanceOf(account, {
-        gasLimit: 100000,
-    });
+    return contract.balanceOf(account);
 }
