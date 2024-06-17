@@ -16,7 +16,7 @@ export const useMintContract = async (gs1barcode, account, provider) => {
             signer
         );
         return contract.mintByApprove(gs1barcode, {
-            gasLimit: 130000,
+            gasLimit: 170000,
         });
     } else {
         throw new Error('barcode is empty')
